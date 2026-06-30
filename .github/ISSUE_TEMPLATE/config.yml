@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🌐 Try the S3 web app
+    url: https://s3-bibliometric.com/
+    about: Run S3 in the browser without writing code.
+  - name: 💬 Questions & ideas (Discussions)
+    url: ../../discussions
+    about: Discuss an idea before submitting, or ask a question.
