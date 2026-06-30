@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software or method, please cite the paper below."
+title: "S3 — Semantic Similarity Score"
+abstract: >-
+  A content-based method for science mapping that uses transformer (SBERT) embeddings of titles
+  and abstracts, time-masking, and community detection to map the intellectual structure of a
+  research field, re-introducing citation data only to characterise and validate communities.
+type: software
+authors:
+  - family-names: Bekamiri
+    given-names: Hamid
+  # TODO: add co-authors in submission order, e.g.:
+  # - family-names: <Surname>
+  #   given-names: <Given>
+repository-code: "https://github.com/<your-username>/s3-semantic-similarity-score"
+url: "https://s3-bibliometric.com/"
+license: MIT
+keywords:
+  - science mapping
+  - bibliometrics
+  - transformer models
+  - SBERT
+  - community detection
+  - intellectual structure
+preferred-citation:
+  type: article
+  title: "Semantic Similarity Score: A New Method for Mapping Intellectual Structures in Business Research"
+  authors:
+    - family-names: Bekamiri
+      given-names: Hamid
+    # TODO: add co-authors here too
+  journal: "Journal of Business Research"
+  year: 2025          # TODO: update to the publication year
+  doi: "10.xxxx/xxxxx"  # TODO: add the DOI once published

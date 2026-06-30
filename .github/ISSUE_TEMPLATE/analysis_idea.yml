@@ -1,0 +1,80 @@
+name: 💡 Analysis idea
+description: Propose a new way to analyse the data with S3 (funding, geography, trends, ...). No code needed.
+title: "[Analysis idea] "
+labels: ["analysis-idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing an analysis! You do **not** need to write any code.
+        The authors review promising ideas, test them on the app/data, and — if they work — build
+        them into [s3-bibliometric.com](https://s3-bibliometric.com/). Accepted proposers are
+        credited as contributors. See the [proposal process](../blob/main/docs/proposal-process.md).
+  - type: input
+    id: name
+    attributes:
+      label: Short name for the analysis
+      placeholder: e.g. "Funding profile of communities"
+    validations:
+      required: true
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Dimension / category
+      options:
+        - Funding / grants
+        - Authors / affiliations / collaboration
+        - Geography
+        - Temporal / trends / forecasting
+        - Impact / altmetrics
+        - Diversity
+        - Methodological (improve S3 itself)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What specific question does it answer? Why is it useful?
+      placeholder: e.g. "Do funded papers cluster in the field's core or its emerging periphery?"
+    validations:
+      required: true
+  - type: textarea
+    id: beyond
+    attributes:
+      label: What does it add beyond what the S3 app already shows?
+    validations:
+      required: false
+  - type: textarea
+    id: data
+    attributes:
+      label: What data does it need?
+      description: Which fields, and are they in standard exports (Scopus / WoS / Dimensions / OpenAlex) or an extra source?
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: How might it be computed? (rough sketch — optional)
+    validations:
+      required: false
+  - type: input
+    id: references
+    attributes:
+      label: References (optional)
+    validations:
+      required: false
+  - type: checkboxes
+    id: participation
+    attributes:
+      label: Participation & credit
+      options:
+        - label: I'm willing to help test or refine this idea
+        - label: I understand that if it's accepted and added, I'll be credited as a contributor
+  - type: checkboxes
+    id: coc
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

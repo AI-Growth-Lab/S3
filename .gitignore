@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Jupyter
+*.ipynb_checkpoints
+
+# Data (do not commit large raw bibliographic exports or model caches)
+data/raw/
+*.csv
+*.tsv
+*.ris
+*.xlsx
+!examples/**/*.csv
+!data/README.md
+embeddings/
+*.npy
+*.npz
+*.pt
+.cache/
+.huggingface/
+
+# Environment / secrets
+.env
+*.key
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

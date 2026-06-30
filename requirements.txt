@@ -1,0 +1,15 @@
+# Core dependencies for the S3 method (pin versions as appropriate for your environment)
+sentence-transformers>=2.2
+torch
+numpy
+pandas
+scikit-learn
+scipy
+networkx
+leidenalg
+python-igraph
+# Topic characterisation / comparison (optional)
+# bertopic
+# Visualisation (optional)
+matplotlib
+plotly
