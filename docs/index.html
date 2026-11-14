@@ -7,7 +7,7 @@
 :root{
   --bg:#f5f8f8; --surface:#ffffff; --ink:#122126; --muted:#56686e; --line:#d5e0e2;
   --teal:#0f6b74; --teal-soft:#e2f0f1; --amber:#c2672c; --amber-soft:#f8ebe1; --plum:#5b4a8a; --plum-soft:#ece8f5;
-  --green:#2f7a4b; --green-soft:#e3f2e8;
+  --green:#2f7a4b; --green-soft:#e3f2e8; --blue:#2b5c9e; --blue-soft:#e3ecf7;
   --code-bg:#0f2a2f; --code-ink:#e6f4f5;
   --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
   --body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
@@ -16,12 +16,12 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0c1618; --surface:#132226; --ink:#e3eef0; --muted:#97aab0; --line:#24393e;
   --teal:#5fc0c8; --teal-soft:#16343a; --amber:#e79a63; --amber-soft:#3a281c; --plum:#b9a8ee; --plum-soft:#2a2540;
-  --green:#7fcf9c; --green-soft:#1a3324;
+  --green:#7fcf9c; --green-soft:#1a3324; --blue:#8db4ec; --blue-soft:#17283f;
   --code-bg:#071113; --code-ink:#d8eef0; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0c1618; --surface:#132226; --ink:#e3eef0; --muted:#97aab0; --line:#24393e;
   --teal:#5fc0c8; --teal-soft:#16343a; --amber:#e79a63; --amber-soft:#3a281c; --plum:#b9a8ee; --plum-soft:#2a2540;
-  --green:#7fcf9c; --green-soft:#1a3324;
+  --green:#7fcf9c; --green-soft:#1a3324; --blue:#8db4ec; --blue-soft:#17283f;
   --code-bg:#071113; --code-ink:#d8eef0; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
@@ -59,6 +59,8 @@ a.fact:hover{border-color:var(--teal)}
 .lane{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .lane header{display:flex;flex-direction:column;gap:4px}
 .lane h3{font-size:1.15rem}
+.lane.wide{grid-column:1/-1}
+.lane.wide ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px 18px}
 .who{font-size:.85rem;color:var(--muted)}
 .badge{align-self:flex-start;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:99px;padding:2px 9px;background:var(--cs);color:var(--c)}
 .lane ol{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:s}
@@ -95,7 +97,7 @@ a.fact:hover{border-color:var(--teal)}
 
 <div class="wrap">
   <h1>Analyse your literature with S3, step by step</h1>
-  <p class="lede">S3 maps the themes of a research field from the titles and abstracts of its papers, checks which map fits your data best, and writes a report organised for a literature review. Use it from Claude, ChatGPT or a Google Colab notebook, without writing code yourself.</p>
+  <p class="lede">S3 maps the themes of a research field from the titles and abstracts of its papers, checks which map fits your data best, and writes a report organised for a literature review. Use it from Claude, ChatGPT or a Google Colab notebook without writing code yourself, or from R.</p>
   <div class="facts">
     <span class="fact"><b>Free</b> and open source</span>
     <span class="fact">Runs on <b>your computer</b>, or in <b>Google Colab</b></span>
@@ -126,7 +128,7 @@ a.fact:hover{border-color:var(--teal)}
 
     <section class="step" aria-labelledby="s2">
       <div class="num">2</div>
-      <h2 id="s2">Install uv, once (not needed in Colab)</h2>
+      <h2 id="s2">Install uv, once (not needed in Colab or R)</h2>
       <div class="body">
         <p>uv starts S3 and installs everything it needs. Paste one line, then close and reopen the window.</p>
         <div class="os">
@@ -216,6 +218,23 @@ files.download("s3_report.html")</span><button class="copy" type="button">Copy</
           <li><div>Upload the report and files to the chat, and ask:<div class="ask">Name each theme in 3–5 words and draft the structure of my literature review, with the gaps to discuss.</div></div></li>
         </ol>
         <p class="fix">Browser chats can't start programs on your computer, so they read the report S3 made instead of running S3 themselves.</p>
+      </section>
+      <section class="lane wide" style="--c:var(--blue);--cs:var(--blue-soft)" aria-labelledby="le">
+        <header><span class="badge">R runs S3</span><h3 id="le">R or RStudio</h3><span class="who">R 4.1 or newer; results come back as data frames</span></header>
+        <ol>
+          <li><div>Install the R package once:
+            <div class="cmd"><span>install.packages("remotes")
+remotes::install_github("AI-Growth-Lab/s3-bibliometric", subdir = "r")</span><button class="copy" type="button">Copy</button></div></div></li>
+          <li><div>Run S3, see the themes and write the report:
+            <div class="cmd"><span>library(s3bibliometric)
+res &lt;- s3_run("~/Downloads/scopus.csv", map = "auto")
+s3_communities(res)
+s3_report(res, "s3_report.html")</span><button class="copy" type="button">Copy</button></div></div></li>
+          <li><div>Work with any answer in R, for example the foundations of each theme:
+            <div class="cmd"><span>s3_answer(res, "Q8")$tables[[1]]</span><button class="copy" type="button">Copy</button></div>
+            <span class="mut">Try it first on the included example: <code>s3_run(s3_example())</code>.</span></div></li>
+        </ol>
+        <p class="fix">The first time, R sets up the matching Python library by itself (through reticulate), and the first run downloads the language model (420 MB). The R package and the Python library always have the same version, so they give the same results. Scopus API key: put <code>SCOPUS_API_KEY=your-key</code> in <code>~/.Renviron</code>, restart R, then <code>s3_enrich_citations(res)</code>.</p>
       </section>
     </div>
     <div class="merge"></div>
