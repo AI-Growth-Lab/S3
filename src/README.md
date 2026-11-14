@@ -1,7 +1,7 @@
 # `src/` — reference implementation
 
 > **An open implementation is available now:** the Python library
-> [s3-bibliometric](https://github.com/HamidBekamiri/s3-bibliometric)
+> [s3-bibliometric](https://github.com/AI-Growth-Lab/s3-bibliometric)
 > (`pip install s3-bibliometric`) follows the published method step by step (embeddings,
 > time-masked S3 matrix, Leiden with SII threshold choice, c-TF-IDF, QI and MI) and adds a
 > literature-review report, a map comparison and an MCP server for Claude. Start there to build or
