@@ -9,10 +9,11 @@ type: software
 authors:
   - family-names: Bekamiri
     given-names: Hamid
-  # TODO: add co-authors in submission order, e.g.:
-  # - family-names: <Surname>
-  #   given-names: <Given>
-repository-code: "https://github.com/<your-username>/s3-semantic-similarity-score"
+  - family-names: Østergaard
+    given-names: Christian R.
+  - family-names: Timmermans
+    given-names: Bram
+repository-code: "https://github.com/AI-Growth-Lab/S3"
 url: "https://s3-bibliometric.com/"
 license: MIT
 keywords:
@@ -28,7 +29,12 @@ preferred-citation:
   authors:
     - family-names: Bekamiri
       given-names: Hamid
-    # TODO: add co-authors here too
+    - family-names: Østergaard
+      given-names: Christian R.
+    - family-names: Timmermans
+      given-names: Bram
   journal: "Journal of Business Research"
-  year: 2025          # TODO: update to the publication year
-  doi: "10.xxxx/xxxxx"  # TODO: add the DOI once published
+  year: 2027
+  volume: 219
+  start: "116582"
+  doi: "10.1016/j.jbusres.2026.116582"

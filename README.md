@@ -8,10 +8,15 @@ cites whom*, using transformer (SBERT) embeddings of titles and abstracts, a tim
 and community detection. Citation data is re-introduced only to characterise and validate the
 resulting communities. (Full method in [`docs/method.md`](docs/method.md).)
 
-- 📄 **Paper:** *"Semantic Similarity Score: A New Method for Mapping Intellectual Structures in
-  Business Research"* (Journal of Business Research, in press). See [`CITATION.cff`](CITATION.cff).
+- 📄 **Paper:** Bekamiri, Østergaard & Timmermans (2027), *"Semantic Similarity Score: A New Method
+  for Mapping Intellectual Structures in Business Research"*, Journal of Business Research 219,
+  116582. **[doi.org/10.1016/j.jbusres.2026.116582](https://doi.org/10.1016/j.jbusres.2026.116582)**. See [`CITATION.cff`](CITATION.cff).
 - 🌐 **App (no code needed):** **[s3-bibliometric.com](https://s3-bibliometric.com/)** — upload a
   Scopus / Web of Science / Dimensions / OpenAlex export and get the map.
+- 🐍 **Python library and AI assistants:** **[s3-bibliometric](https://pypi.org/project/s3-bibliometric/)**
+  ([code](https://github.com/HamidBekamiri/s3-bibliometric)) runs S3 on your own computer from
+  Claude, ChatGPT, a Google Colab notebook or the command line, and writes a report organised for
+  a literature review. Install with `pip install s3-bibliometric`.
 - 📘 **Step-by-step guides:** **[S3 step by step](https://ai-growth-lab.github.io/S3/)** — run S3 from
   Claude, ChatGPT or a Google Colab notebook — and
   **[Scopus export for S3](https://ai-growth-lab.github.io/S3/scopus-export.html)**.
@@ -85,7 +90,9 @@ what a new analysis can draw on) is described in [`docs/data-format.md`](docs/da
 │   ├── proposal-process.md    ← the full submit → test → implement → credit lifecycle
 │   ├── method.md              ← how the S3 method works
 │   ├── metrics.md             ← QI, MI, TCI, Silhouette, citation definitions
-│   └── data-format.md         ← input data and where to get it
+│   ├── data-format.md         ← input data and where to get it
+│   ├── index.html             ← step-by-step guide (ai-growth-lab.github.io/S3)
+│   └── scopus-export.html     ← how to export from Scopus (ai-growth-lab.github.io/S3/scopus-export.html)
 ├── CONTRIBUTORS.md            ← 🎉 people credited for accepted ideas/contributions
 ├── examples/                  ← implemented analyses (notebooks / outputs)
 ├── src/                       ← method / app source code (if/when opened)
@@ -107,8 +114,13 @@ be respectful — see the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## 📣 Citation & 📜 License
 
-Cite the paper (see [`CITATION.cff`](CITATION.cff); update the DOI once published). Released under
-the [MIT License](LICENSE).
+Cite the paper (also in [`CITATION.cff`](CITATION.cff)):
+
+> Bekamiri, H., Østergaard, C. R., & Timmermans, B. (2027). Semantic similarity score: A new method
+> for mapping intellectual structures in business research. *Journal of Business Research*, 219,
+> 116582. https://doi.org/10.1016/j.jbusres.2026.116582
+
+Released under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgements
 
