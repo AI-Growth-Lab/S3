@@ -256,5 +256,7 @@ Released under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgements
 
-Created by Hamid Bekamiri and co-authors. The app was built with substantial AI-assisted ("vibe")
+Created by [Hamid Bekamiri](https://github.com/HamidBekamiri) with co-authors
+[Christian Richter Østergaard](https://orcid.org/0000-0003-1782-202X) and Bram Timmermans
+(see [`CONTRIBUTORS.md`](CONTRIBUTORS.md)). The app was built with substantial AI-assisted ("vibe")
 coding; community ideas and contributions to extend and strengthen it are warmly welcomed.

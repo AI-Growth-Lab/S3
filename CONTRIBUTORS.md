@@ -12,10 +12,13 @@ request yourself, or via a `Co-authored-by:` commit trailer naming you.
 
 ## People
 
-| Contributor | GitHub | Contribution |
-|-------------|--------|--------------|
-| Hamid Bekamiri | @<handle> | Method & app author (maintainer) |
-| _your name here_ | @you | _e.g. proposed analysis #0003 (funding profile)_ |
+| Contributor | Profile | Contribution |
+|-------------|---------|--------------|
+| Hamid Bekamiri | [@HamidBekamiri](https://github.com/HamidBekamiri) | Method, app and Python library author (maintainer) |
+| Christian Richter Østergaard | [ORCID 0000-0003-1782-202X](https://orcid.org/0000-0003-1782-202X) | S3 method and paper co-author |
+| Bram Timmermans | | S3 method and paper co-author |
+
+Your proposal could be the next row, e.g. *proposed analysis #0003 (funding profile)*.
 
 <!--
 Maintainers: add a row per contributor. If you use the all-contributors bot
