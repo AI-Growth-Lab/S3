@@ -156,6 +156,26 @@ a.fact:hover{border-color:var(--teal)}
         <p class="mut">Reference lists need your institution's Scopus access: run it on campus or the VPN, or ask your library for an institutional token. Never paste a key into a chat.</p>
       </div>
     </section>
+    <div class="join"></div>
+
+    <section class="step opt" aria-labelledby="s4o">
+      <div class="num">4</div>
+      <h2 id="s4o">Optional: a hybrid map (text plus citations)</h2>
+      <div class="body">
+        <p>S3 uses the text map by default, as in the published method. If you ask for a <b>hybrid map</b>, S3 first screens text plus bibliographic coupling, co-citation or direct citation at 5%, 10%, … 40% weight. It uses the best hybrid only when it raises <b>both</b> the silhouette and the QI of the communities above the text map's, while clustering at least 90% as many papers; otherwise it keeps the text map. Citations only count for papers that are already close in content.</p>
+        <div class="os">
+          <div><div class="label">Claude Desktop or Claude Code: ask</div>
+            <div class="cmd"><span>Run S3 on ~/Downloads/scopus.csv with a hybrid map.</span><button class="copy" type="button">Copy</button></div></div>
+          <div><div class="label">Command line (Claude.ai or ChatGPT route)</div>
+            <div class="cmd"><span>uvx --from s3-bibliometric s3bib report ~/Downloads/scopus.csv --map hybrid -o ~/Desktop/s3_report.html</span><button class="copy" type="button">Copy</button></div></div>
+          <div><div class="label">Google Colab or Python</div>
+            <div class="cmd"><span>res = s3bib.run_s3(csv, s3bib.S3Config(map_weights="hybrid"))</span><button class="copy" type="button">Copy</button></div></div>
+          <div><div class="label">R</div>
+            <div class="cmd"><span>res &lt;- s3_run("~/Downloads/scopus.csv", map = "hybrid")</span><button class="copy" type="button">Copy</button></div></div>
+        </div>
+        <p class="mut">The report's Q0 shows the screening: silhouette, QI and topic coherence at every weight, and which map was used.</p>
+      </div>
+    </section>
     <div class="join" style="height:0"></div>
 
     <div class="fork">
@@ -173,7 +193,7 @@ a.fact:hover{border-color:var(--teal)}
   }
 }</span><button class="copy" type="button">Copy</button></div></div></li>
           <li><div>Quit Claude completely and open it again. S3's tools appear in the tools menu of the chat box.</div></li>
-          <li><div>Ask:<div class="ask">Compare the maps for ~/Downloads/scopus.csv, run S3 on the recommended one, label the themes and build the literature-review report.</div></div></li>
+          <li><div>Ask:<div class="ask">Run S3 on ~/Downloads/scopus.csv, label the themes and build the literature-review report.</div></div></li>
         </ol>
         <p class="fix">Tools missing? Run <code>which uvx</code> (Mac) or <code>where uvx</code> (Windows) and put that full path in <code>"command"</code>. Updating: restart Claude; if the new tools don't show, run <code>uv cache clean s3-bibliometric</code> first.</p>
       </section>
@@ -183,7 +203,7 @@ a.fact:hover{border-color:var(--teal)}
         <ol>
           <li><div>Add S3 with one command:
             <div class="cmd"><span>claude mcp add s3-bibliometric -- uvx s3-bibliometric</span><button class="copy" type="button">Copy</button></div></div></li>
-          <li><div>Ask:<div class="ask">Compare the maps for my Scopus file, then run S3, show me the themes and the papers to read first, and write the methods paragraph.</div></div></li>
+          <li><div>Ask:<div class="ask">Run S3 on my Scopus file, show me the themes and the papers to read first, and write the methods paragraph.</div></div></li>
         </ol>
         <p class="fix">Claude asks which language model to use (mpnet, from the S3 paper, is the default) and whether you have a Scopus API key. Never paste a key into the chat.</p>
       </section>
@@ -197,13 +217,12 @@ a.fact:hover{border-color:var(--teal)}
           <li><div>Upload your Scopus CSV (pick the file when asked):
             <div class="cmd"><span>from google.colab import files
 csv = list(files.upload())[0]</span><button class="copy" type="button">Copy</button></div></div></li>
-          <li><div>Compare the maps, run S3 on the recommended one and download the report:
+          <li><div>Run S3 and download the report:
             <div class="cmd"><span>import s3bib
-res = s3bib.run_s3(csv, s3bib.S3Config(map_weights="auto"))
-print(res.answer("Q0"))
+res = s3bib.run_s3(csv)
 res.report("s3_report.html")
 files.download("s3_report.html")</span><button class="copy" type="button">Copy</button></div>
-            <span class="mut"><code>print(res.answer("Q0"))</code> shows the map comparison and the map used.</span></div></li>
+            <span class="mut">For a hybrid map, see step 4.</span></div></li>
         </ol>
         <p class="fix">Colab runs on Google's servers, so your file is uploaded there. Scopus API key: store it under <b>Secrets</b> (key icon) as <code>SCOPUS_API_KEY</code>, then run <code>import os; from google.colab import userdata</code>, <code>os.environ["SCOPUS_API_KEY"] = userdata.get("SCOPUS_API_KEY")</code> and <code>s3bib.enrich_citations(res)</code> before the report; Google's servers are off campus, so this usually also needs an institutional token. In Jupyter on your computer, skip the upload cell and use the file path.</p>
       </section>
@@ -212,8 +231,8 @@ files.download("s3_report.html")</span><button class="copy" type="button">Copy</
         <header><span class="badge">You run S3, chat explains</span><h3 id="lc">Claude.ai or ChatGPT</h3><span class="who">Browser or phone</span></header>
         <ol>
           <li><div>Make the report with one command (change the file path):
-            <div class="cmd"><span>uvx --from s3-bibliometric s3bib report ~/Downloads/scopus.csv --map auto -o ~/Desktop/s3_report.html</span><button class="copy" type="button">Copy</button></div>
-            <span class="mut"><code>--map auto</code> compares the maps first and uses the recommended one. Press Enter for the default model; answer <code>n</code> if you have no Scopus API key.</span></div></li>
+            <div class="cmd"><span>uvx --from s3-bibliometric s3bib report ~/Downloads/scopus.csv -o ~/Desktop/s3_report.html</span><button class="copy" type="button">Copy</button></div>
+            <span class="mut">Press Enter for the default model; answer <code>n</code> if you have no Scopus API key. Add <code>--map hybrid</code> for a hybrid map (step 4).</span></div></li>
           <li><div>Open <code>s3_report.html</code> and click the downloads at the top: themes table, methods paragraph, reading list.</div></li>
           <li><div>Upload the report and files to the chat, and ask:<div class="ask">Name each theme in 3–5 words and draft the structure of my literature review, with the gaps to discuss.</div></div></li>
         </ol>
@@ -227,7 +246,7 @@ files.download("s3_report.html")</span><button class="copy" type="button">Copy</
 remotes::install_github("AI-Growth-Lab/s3-bibliometric", subdir = "r")</span><button class="copy" type="button">Copy</button></div></div></li>
           <li><div>Run S3, see the themes and write the report:
             <div class="cmd"><span>library(s3bibliometric)
-res &lt;- s3_run("~/Downloads/scopus.csv", map = "auto")
+res &lt;- s3_run("~/Downloads/scopus.csv")
 s3_communities(res)
 s3_report(res, "s3_report.html")</span><button class="copy" type="button">Copy</button></div></div></li>
           <li><div>Work with any answer in R, for example the foundations of each theme:

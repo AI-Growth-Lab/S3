@@ -49,7 +49,7 @@ pip install s3-bibliometric
 ```python
 import s3bib
 
-res = s3bib.run_s3("scopus.csv", s3bib.S3Config(map_weights="auto"))
+res = s3bib.run_s3("scopus.csv")
 res.communities()               # the research themes
 res.answer("Q8")                # local vs global foundations of each theme
 res.report("s3_report.html")    # the full report, organised for a literature review
@@ -58,11 +58,13 @@ res.report("s3_report.html")    # the full report, organised for a literature re
 Or in one command, without installing anything first ([uv](https://docs.astral.sh/uv/) runs it):
 
 ```bash
-uvx --from s3-bibliometric s3bib report scopus.csv --map auto -o s3_report.html
+uvx --from s3-bibliometric s3bib report scopus.csv -o s3_report.html
 ```
 
-`map_weights="auto"` first checks whether text alone or text plus a citation relation gives the
-better map for your data, then uses the better one.
+S3 uses the text map, the published method, by default. For a hybrid map, use
+`S3Config(map_weights="hybrid")` or `--map hybrid`: S3 screens text plus each citation relation at
+5–40% weight and uses the best hybrid only when it raises both the silhouette and the QI of the
+communities; otherwise it keeps the text map.
 
 </details>
 
