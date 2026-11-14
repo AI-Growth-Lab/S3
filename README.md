@@ -18,6 +18,7 @@ or from Python.
 **[Web app](https://s3-bibliometric.com/)** ·
 **[Paper](https://doi.org/10.1016/j.jbusres.2026.116582)** ·
 **[Python library](https://github.com/AI-Growth-Lab/s3-bibliometric)** ·
+**[R package](https://github.com/AI-Growth-Lab/s3-bibliometric/tree/main/r)** ·
 **[Propose an analysis](../../issues/new/choose)**
 
 </div>
@@ -36,6 +37,7 @@ You need one file: your search results exported from Scopus as CSV
 | Use ChatGPT or Claude.ai in the browser | **One command + upload** | Make the report with one command, then upload it to the chat ([guide](https://ai-growth-lab.github.io/S3/)) |
 | Work in a notebook | **Google Colab or Jupyter** | Three cells: install, upload, run ([guide](https://ai-growth-lab.github.io/S3/)) |
 | Write my own analysis | **Python library** | `pip install s3-bibliometric` ([docs](https://github.com/AI-Growth-Lab/s3-bibliometric)) |
+| Work in R | **R package** | `remotes::install_github("AI-Growth-Lab/s3-bibliometric", subdir = "r")` ([docs](https://github.com/AI-Growth-Lab/s3-bibliometric/tree/main/r)) |
 
 <details>
 <summary><b>Quick start for Python and the command line</b></summary>
