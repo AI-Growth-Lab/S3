@@ -32,6 +32,8 @@ h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.01em}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
 .fact{font-size:.82rem;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:4px 12px;color:var(--muted)}
 .fact b{color:var(--ink);font-weight:600}
+a.fact{text-decoration:none}
+a.fact:hover{border-color:var(--teal)}
 .flow{margin-top:30px;display:flex;flex-direction:column;align-items:stretch}
 .join{width:2px;height:26px;background:var(--line);margin:0 auto}
 .step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;min-width:0}
@@ -98,7 +100,7 @@ h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.01em}
     <span class="fact"><b>Free</b> and open source</span>
     <span class="fact">Runs on <b>your computer</b>, or in <b>Google Colab</b></span>
     <span class="fact">First run downloads a <b>420 MB</b> language model (a few minutes)</span>
-    <span class="fact">Version <b>0.14.0</b></span>
+    <a class="fact" id="s3-version" href="https://pypi.org/project/s3-bibliometric/">Latest version on <b>PyPI</b></a>
   </div>
   <div class="refs" aria-label="Code, package and method">
     <span>S3 project: <a href="https://github.com/AI-Growth-Lab/S3">github.com/AI-Growth-Lab/S3</a> · Library code and full guide: <a href="https://github.com/AI-Growth-Lab/s3-bibliometric">github.com/AI-Growth-Lab/s3-bibliometric</a> · Package: <a href="https://pypi.org/project/s3-bibliometric/">pypi.org/project/s3-bibliometric</a></span>
@@ -240,6 +242,16 @@ files.download("s3_report.html")</span><button class="copy" type="button">Copy</
 </div>
 
 <script>
+// The version chip shows the latest release on PyPI, so it never goes stale.
+// Without network access to PyPI it stays a plain link to the PyPI page.
+(function(){
+  const el=document.getElementById('s3-version');
+  if(!el||!window.fetch) return;
+  fetch('https://pypi.org/pypi/s3-bibliometric/json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():null)
+    .then(d=>{const v=d&&d.info&&d.info.version; if(v&&/^[0-9][0-9A-Za-z.+-]*$/.test(v)){el.textContent='Version ';const b=document.createElement('b');b.textContent=v;el.appendChild(b);el.title='Latest release on PyPI';}})
+    .catch(()=>{});
+})();
 document.querySelectorAll('.copy').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const text=btn.parentElement.querySelector('span').textContent;
