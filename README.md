@@ -12,6 +12,9 @@ resulting communities. (Full method in [`docs/method.md`](docs/method.md).)
   Business Research"* (Journal of Business Research, in press). See [`CITATION.cff`](CITATION.cff).
 - 🌐 **App (no code needed):** **[s3-bibliometric.com](https://s3-bibliometric.com/)** — upload a
   Scopus / Web of Science / Dimensions / OpenAlex export and get the map.
+- 📘 **Step-by-step guides:** **[S3 step by step](https://ai-growth-lab.github.io/S3/)** — run S3 from
+  Claude, ChatGPT or a Google Colab notebook — and
+  **[Scopus export for S3](https://ai-growth-lab.github.io/S3/scopus-export.html)**.
 
 ---
 
