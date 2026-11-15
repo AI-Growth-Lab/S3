@@ -176,6 +176,30 @@ a.fact:hover{border-color:var(--teal)}
         <p class="mut">The report's Q0 shows the screening: silhouette, QI and topic coherence at every weight, and which map was used.</p>
       </div>
     </section>
+    <div class="join"></div>
+
+    <section class="step opt" aria-labelledby="s5o">
+      <div class="num">5</div>
+      <h2 id="s5o">Optional: a knowledge graph of methods, data, theories and findings</h2>
+      <div class="body">
+        <p>S3 can add what each paper <b>uses</b> and <b>finds</b> to its knowledge graph as triples: methods, data sources, theories, constructs, countries, industries and level of analysis, and findings between constructs such as <i>absorptive capacity → increases → innovation performance</i>. The report then shows each theme's methods and theories, gaps, and which findings papers agree or disagree on (Q39 and Q40).</p>
+        <p><b>Upload your own</b> triples (CSV or Excel with <code>paper_id</code>, <code>subject</code>, <code>relation</code>, <code>object</code>), or let <b>Claude or ChatGPT extract them</b> from the abstracts. A progress bar shows each batch, and every triple keeps a quote from the abstract that S3 checks.</p>
+        <div class="os">
+          <div><div class="label">Claude Desktop or Claude Code: ask</div>
+            <div class="cmd"><span>Extract the knowledge-graph triples for my S3 run and show me Q39 and Q40.</span><button class="copy" type="button">Copy</button></div>
+            <span class="mut">Claude asks whether to use your Claude plan, your ChatGPT plan, an API key, or do it in the chat.</span></div>
+          <div><div class="label">Command line, with your Claude plan (Claude Code installed)</div>
+            <div class="cmd"><span>uvx --from s3-bibliometric s3bib extract-triples ~/Downloads/scopus.csv --backend claude-code -o ~/Desktop/triples.csv</span><button class="copy" type="button">Copy</button></div>
+            <span class="mut">Then add <code>--triples ~/Desktop/triples.csv</code> to the report command. <code>--backend codex</code> uses your ChatGPT plan.</span></div>
+          <div><div class="label">Google Colab or Python, with an API key or your own file</div>
+            <div class="cmd"><span>res.extract_triples("anthropic", max_papers=30)   # or res.add_triples("triples.csv")</span><button class="copy" type="button">Copy</button></div>
+            <span class="mut">API keys need <code>pip install "s3-bibliometric[llm]"</code> and <code>ANTHROPIC_API_KEY</code> or <code>OPENAI_API_KEY</code> (Colab: Secrets).</span></div>
+          <div><div class="label">R</div>
+            <div class="cmd"><span>s3_extract_triples(res, "claude-code")   # or s3_add_triples(res, "triples.csv")</span><button class="copy" type="button">Copy</button></div></div>
+        </div>
+        <p class="mut">Try 30 papers first: extraction takes a few seconds per paper, and the answers are saved, so a stopped run carries on where it left off.</p>
+      </div>
+    </section>
     <div class="join" style="height:0"></div>
 
     <div class="fork">
@@ -262,7 +286,7 @@ s3_report(res, "s3_report.html")</span><button class="copy" type="button">Copy</
       <h2 id="s4">What you get: a report organised for your literature review</h2>
       <div class="parts">
         <div class="part"><b>The field at a glance</b>Numbers, themes, one paper per theme to read first, trends and gaps.</div>
-        <div class="part"><b>Theme cards</b>What each theme is about, word clouds, foundations, growth, links between themes.</div>
+        <div class="part"><b>Theme cards</b>What each theme is about, word clouds, foundations, growth, links between themes, and with triples its methods, theories and data.</div>
         <div class="part"><b>Research agenda</b>Knowledge gaps and emerging themes for your discussion section.</div>
         <div class="part"><b>Methods appendix</b>Which map was used and why (text alone or text plus citations), a methods paragraph to adapt, a glossary and the validation against other methods.</div>
         <div class="part"><b>Downloads</b>Reading lists for Zotero, EndNote or Mendeley (RIS, BibTeX), themes table, PRISMA counts.</div>
